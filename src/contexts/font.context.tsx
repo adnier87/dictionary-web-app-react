@@ -1,12 +1,12 @@
 import React, { createContext, useState, SetStateAction } from 'react';
 import { FontType } from '../constants';
 
-const defaultFont = FontType.Serif;
+const defaultFont = Object.keys(FontType)[0];
 
 // Define the type for the font context
 type FontContextType = {
   font: string;
-  setFont: React.Dispatch<SetStateAction<FontType>>;
+  setFont: React.Dispatch<SetStateAction<string>>; // Update the type of setFont
 };
 
 // Create the font context

@@ -1,5 +1,5 @@
 export enum FontType {
-  Serif = "serif",
-  SansSerif = "sans-serif",
-  Monospace = "monospace",
+  Serif = "Serif",
+  SansSerif = "Sans Serif",
+  Monospace = "Mono",
 }
