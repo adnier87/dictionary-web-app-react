@@ -3,3 +3,8 @@ export enum FontType {
   SansSerif = "Sans Serif",
   Monospace = "Mono",
 }
+
+export enum Theme {
+  Light,
+  Dark,
+}
