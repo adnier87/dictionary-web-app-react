@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
+import book from './assets/book.svg';
 import './App.scss';
+
+import { FontProvider } from './contexts/font.context';
+import FontSelector from './components/fonts-selector.component';
+import ThemeSwitcher from './components/theme-switcher.component';
+import { ThemeProvider } from './contexts/theme.context';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <FontProvider>
+        <div className='container mx-auto pt-14'>
+          <header className='w-full max-w-[737px] mx-auto flex justify-between'>
+            <img src={book} alt='book' className='w-8 h-8' />
+            <div className='flex items-center'>
+              <FontSelector />
+              <span className='mx-5 text-red-500'>|</span>
+              <ThemeSwitcher />
+            </div>
+          </header>
+          <main className='container mx-auto'>
+
+
+          </main>
+        </div>
+      </FontProvider>
+    </ThemeProvider>
   );
 }
 
 export default App;
+
