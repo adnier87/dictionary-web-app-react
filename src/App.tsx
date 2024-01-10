@@ -14,10 +14,9 @@ function App() {
         <div className='container mx-auto pt-14'>
           <header className='w-full max-w-[737px] mx-auto flex justify-between'>
             <img src={book} alt='book' className='w-8 h-8' />
-            <div className='flex items-center'>
-              <FontSelector />
-              <span className='mx-5 text-red-500'>|</span>
-              <ThemeSwitcher />
+            <div className='flex items-center divide-x'>
+              <div className='mr-5'><FontSelector /></div>
+              <div className='pl-5'><ThemeSwitcher /></div>
             </div>
           </header>
           <main className='container mx-auto'>
