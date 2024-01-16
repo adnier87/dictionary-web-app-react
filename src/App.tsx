@@ -6,6 +6,7 @@ import { FontProvider } from './contexts/font.context';
 import FontSelector from './components/fonts-selector.component';
 import ThemeSwitcher from './components/theme-switcher.component';
 import { ThemeProvider } from './contexts/theme.context';
+import SearcherView from './views/searcher.view';
 
 function App() {
   return (
@@ -19,9 +20,8 @@ function App() {
               <div className='pl-5'><ThemeSwitcher /></div>
             </div>
           </header>
-          <main className='container mx-auto'>
-
-
+          <main className='w-full max-w-[737px] mx-auto pt-12'>
+            <SearcherView />
           </main>
         </div>
       </FontProvider>
