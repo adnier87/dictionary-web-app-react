@@ -11,7 +11,7 @@ const dictionaryService = new DictionaryService();
 
 const SearcherView: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState<{word: string, meanings: Meaning[], phonetics: Phonetic[]}>({
+  const [searchResults, setSearchResults] = useState<{word: string, meanings: Meaning[], phonetics: Phonetic[], sourceUrls?: string[]}>({
     word: '',
     meanings: [],
     phonetics: []
@@ -37,12 +37,14 @@ const SearcherView: React.FC = () => {
             return {
               word: curr.word,
               meanings: [...acc.meanings, ...curr.meanings],
-              phonetics: [...acc.phonetics, ...curr.phonetics]
+              phonetics: [...acc.phonetics, ...curr.phonetics],
+              sourceUrls: [...acc.sourceUrls, ...curr.sourceUrls]
             }
           }, {
             word: '',
             meanings: [],
-            phonetics: []
+            phonetics: [],
+            sourceUrls: []
           })
         )
       ).subscribe({
