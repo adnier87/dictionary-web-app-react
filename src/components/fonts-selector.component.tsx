@@ -14,13 +14,13 @@ const FontSelector: React.FC = () => {
   return (
     <Listbox value={font} onChange={handleFontChange}>
       <div className="relative">
-        <Listbox.Button className="w-28 cursor-default sm:text-sm text-left flex justify-between">
-            <span>{FontType[font as keyof typeof FontType]}</span>
-            <span><ChevronDownIcon className='w-5' /></span>
+        <Listbox.Button className="w-32 flex justify-between items-center">
+            <span className='font-bold text-lg dark:text-white'>{FontType[font as keyof typeof FontType]}</span>
+            <span><ChevronDownIcon className='w-5 text-secondary' /></span>
         </Listbox.Button>
-        <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+        <Listbox.Options className="absolute w-full p-3 mt-3 overflow-auto text-base bg-white dark:bg-neutral-900 rounded-md shadow-lg shadow-primary dark:shadow-secondary max-h-60 z-40">
           {Object.entries(FontType).map(([key, value]) => (
-            <Listbox.Option key={key} value={key} className={({ active }) => `${active ? 'text-white bg-blue-600' : 'text-gray-900'} cursor-default select-none relative`}>
+            <Listbox.Option key={key} value={key} className={({ active, selected }) => `${selected ? 'font-bold ' : ''}${active ? 'font-bold text-secondary' : 'text-neutral-800 dark:text-white'}  text-lg cursor-default select-none relative`}>
               {value}
             </Listbox.Option>
           ))}
