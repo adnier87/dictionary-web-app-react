@@ -1,16 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { map } from 'rxjs';
+import { catchError, map } from 'rxjs';
 import _ from 'lodash';
 
 import DictionaryService from '../services/dictionary.service';
 import InputSearcher from '../components/input-searcher.component';
 import ResultViewer from '../components/result-viewer.component';
-import { Meaning, Phonetic } from '../interfaces';
+import { Meaning, Phonetic, ResultErrorUI } from '../interfaces';
+import ResultError from '../components/result-error.component';
 
 const dictionaryService = new DictionaryService();
 
 const SearcherView: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [error, setError] = useState<ResultErrorUI>({
+    title: '',
+    message: '',
+    resolution: '',
+  });
   const [searchResults, setSearchResults] = useState<{word: string, meanings: Meaning[], phonetics: Phonetic[], sourceUrls?: string[]}>({
     word: '',
     meanings: [],
@@ -46,20 +52,29 @@ const SearcherView: React.FC = () => {
             phonetics: [],
             sourceUrls: []
           })
-        )
+        ),
+        catchError((err) => {
+          throw err.response.data;
+        })
       ).subscribe({
         next: (data) => {
           console.log(data);
           setSearchResults(data);
+          setError({
+            title: '',
+            message: '',
+            resolution: '',
+          });
           abortRequest.current = null;
         },
-        error: (err) => {
+        error: (err: ResultErrorUI) => {
           console.log(err)
           setSearchResults({
             word: '',
             meanings: [],
             phonetics: []
           });
+          setError({...err});
           abortRequest.current = null;
         },
       });
@@ -71,6 +86,9 @@ const SearcherView: React.FC = () => {
       <InputSearcher handleTerm={setSearchTerm} />
       {!_.isEmpty(searchResults.word) && (
         <ResultViewer data={searchResults} />
+      )}
+      {!_.isEmpty(error.title) && (
+        <ResultError error={error} />
       )}
     </div>
   );

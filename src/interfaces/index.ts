@@ -23,3 +23,9 @@ export interface License {
   name: string;
   url:  string;
 }
+
+export interface ResultErrorUI {
+  title: string;
+  message: string;
+  resolution: string;
+}
