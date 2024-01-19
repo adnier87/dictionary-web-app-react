@@ -13,7 +13,7 @@ const ThemeSwitcher: React.FC = () => {
         checked={theme === Theme.Dark}
         onChange={toggleTheme}
         className={`${
-          theme === Theme.Dark ? 'bg-secondary' : 'bg-primary'
+          theme === Theme.Dark ? 'bg-primary' : 'bg-neutral-500'
         } shrink-0 relative inline-flex items-center h-5 rounded-full w-11 transition-colors duration-200 ease-in-out`}
       >
         <span className="sr-only">Toggle theme</span>
@@ -23,7 +23,7 @@ const ThemeSwitcher: React.FC = () => {
           } inline-block w-3 h-3 transform bg-white rounded-full transition duration-200 ease-in-out`}
         />
       </Switch>
-      <MoonIcon className='w-5 ml-3 text-primary dark:text-secondary' />
+      <MoonIcon className='w-5 ml-3 text-neutral-500 dark:text-primary' />
     </div>
   );
 };

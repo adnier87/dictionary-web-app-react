@@ -19,7 +19,7 @@ const ResultViewer: React.FC<ResultViewerProps> = ({ data : { word, meanings, ph
       <header className='my-11 flex'>
         <div>
           <h1 className="text-6xl font-bold text-neutral-800 dark:text-white">{ word }</h1>
-          <p className='text-2xl text-secondary'>{phonetics[0].text}</p>
+          <p className='text-2xl text-primary'>{phonetics[0].text}</p>
         </div>
       </header>
       <div>
@@ -33,7 +33,7 @@ const ResultViewer: React.FC<ResultViewerProps> = ({ data : { word, meanings, ph
               <h4 className='text-xl mb-5 text-neutral-500'>Meaning</h4>
               <ul className='list-disc pl-10'>
                 {meaning.definitions.map((definition, index) => (
-                  <li className='text-lg my-2 text-secondary' key={index}>
+                  <li className='text-lg my-2 text-primary' key={index}>
                     <span className='text-neutral-800 dark:text-white'>{ definition.definition }</span>
                     { !_.isEmpty(definition.example) && <div className='text-lg text-neutral-500'>"{ definition.example }"</div> }
                   </li>

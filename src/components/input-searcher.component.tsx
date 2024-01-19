@@ -24,7 +24,7 @@ const InputSearcher: React.FC<{ handleTerm: (term: string) => void }> = ({ handl
         onKeyUp={handleKeyUp}
       />
       <button className='absolute right-3 h-full' onClick={handleSearch} title="Search">
-        <MagnifyingGlassIcon className="w-5 text-secondary" />
+        <MagnifyingGlassIcon className="w-5 text-primary" />
       </button>
     </div>
   );

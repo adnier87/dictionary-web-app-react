@@ -16,11 +16,11 @@ const FontSelector: React.FC = () => {
       <div className="relative">
         <Listbox.Button className="w-32 flex justify-between items-center">
             <span className='font-bold text-lg dark:text-white'>{FontType[font as keyof typeof FontType]}</span>
-            <span><ChevronDownIcon className='w-5 text-secondary' /></span>
+            <span><ChevronDownIcon className='w-5 text-neutral-500' /></span>
         </Listbox.Button>
-        <Listbox.Options className="absolute w-full p-3 mt-3 overflow-auto text-base bg-white dark:bg-neutral-900 rounded-md shadow-lg shadow-primary dark:shadow-secondary max-h-60 z-40">
+        <Listbox.Options className="absolute w-full p-3 mt-3 overflow-auto text-base bg-white dark:bg-neutral-900 rounded-md shadow-lg shadow-neutral-500 dark:shadow-primary max-h-60 z-40">
           {Object.entries(FontType).map(([key, value]) => (
-            <Listbox.Option key={key} value={key} className={({ active, selected }) => `${selected ? 'font-bold ' : ''}${active ? 'font-bold text-secondary' : 'text-neutral-800 dark:text-white'}  text-lg cursor-default select-none relative`}>
+            <Listbox.Option key={key} value={key} className={({ active, selected }) => `${selected ? 'font-bold ' : ''}${active ? 'font-bold text-primary' : 'text-neutral-800 dark:text-white'}  text-lg cursor-default select-none relative`}>
               {value}
             </Listbox.Option>
           ))}
